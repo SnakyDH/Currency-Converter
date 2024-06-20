@@ -13,7 +13,7 @@ export const getExchangeRateByBaseAndTarget = async (
     }
   );
   if (!response.ok) {
-    throw new Error("Failed to fetch exchange rate by base currency");
+    return "Failed to fetch exchange rate by base currency";
   }
   const json = await response.json();
   return json.data;

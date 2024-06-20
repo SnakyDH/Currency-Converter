@@ -99,3 +99,7 @@ export const showGoodbye = () => {
   console.log("Gracias por usar el convertidor de divisas");
   console.log("Hasta luego!");
 };
+
+export const showError = () => {
+  console.error("La operación falló");
+};
