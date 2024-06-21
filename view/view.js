@@ -50,13 +50,18 @@ export const userCurrency = () => {
 };
 
 export const getUserAmount = () => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const rl = createInterface({
       input: process.stdin,
       output: process.stdout,
     });
     rl.question("Ingrese la cantidad:", (answer) => {
-      resolve(answer);
+      try {
+        const answerFloat = parseFloat(answer);
+        resolve(answerFloat);
+      } catch (error) {
+        reject("La cantidad debe ser un número");
+      }
       rl.close();
     });
   });
@@ -79,6 +84,10 @@ export const showCurrencies = (currencies) => {
   console.table(currencies);
 };
 
+export const showValidCurrencies = (currencies) => {
+  console.log("Monedas válidas:");
+  console.log(currencies);
+};
 export const showExchangeRate = (exchangeRate) => {
   console.table(exchangeRate);
 };
